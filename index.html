@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAICE: Tactical Recursive AI for Capital Efficiency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Proxima Nova', 'Lato', sans-serif; scroll-behavior: smooth; }
+        .chart-container { position: relative; width: 100%; max-width: 450px; margin-left: auto; margin-right: auto; height: 300px; max-height: 350px; }
+        .nav-link { padding: 0.75rem 1rem; border-radius: 0.375rem; transition: background-color 0.3s, color 0.3s; }
+        .nav-link.active, .nav-link:hover { background-color: #2563EB; color: white; } /* blue-600 */
+        .tab-button { padding: 0.5rem 1rem; border-radius: 0.375rem; transition: background-color 0.3s, color 0.3s; font-weight: 500; }
+        .tab-button.active { background-color: #2563EB; color: white; } /* blue-600 */
+        .tab-button:not(.active):hover { background-color: #DBEAFE; } /* blue-100 */
+        .metric-card { background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); padding: 1.5rem; text-align: center; }
+        .stat-value { font-size: 2.25rem; font-weight: 700; }
+        .stat-label { font-size: 0.875rem; color: #4B5563; } /* gray-600 */
+        .details-text-area { margin-top: 1rem; padding: 1rem; background-color: #F9FAFB; border-radius: 0.375rem; border: 1px solid #E5E7EB; font-size: 0.875rem; color: #374151; min-height: 100px;}
+        .TRAICE-loop-step { border: 2px solid #93C5FD; background-color: #EFF6FF; color: #1E40AF; padding: 0.75rem; border-radius: 0.375rem; text-align: center; font-weight: 500;}
+        .TRAICE-loop-arrow { font-size: 1.5rem; color: #60A5FA; margin: 0.5rem 0; }
+        .cta-button { background-color: #10B981; color: white; padding: 0.75rem 2rem; border-radius: 0.375rem; font-weight: 600; transition: background-color 0.3s; text-decoration: none; display: inline-block;}
+        .cta-button:hover { background-color: #059669; }
+        .section-cta-button { background-color: #2563EB; color: white; padding: 0.6rem 1.5rem; border-radius: 0.375rem; font-weight: 500; transition: background-color 0.3s; text-decoration: none; display: inline-block;}
+        .section-cta-button:hover { background-color: #1D4ED8; } /* darker blue */
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-700">
+
+    <nav id="mainNav" class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center h-16 space-x-2 sm:space-x-4 overflow-x-auto">
+                <a href="#hero" class="nav-link text-slate-700 text-sm sm:text-base">Home</a>
+                <a href="#why-TRAICE" class="nav-link text-slate-700 text-sm sm:text-base">The Need</a>
+                <a href="#what-is-TRAICE" class="nav-link text-slate-700 text-sm sm:text-base">What is TRAICE?</a>
+                <a href="#TRAICE-in-action" class="nav-link text-slate-700 text-sm sm:text-base">TRAICE in Action</a>
+                <a href="#compounding-advantage" class="nav-link text-slate-700 text-sm sm:text-base">Advantage</a>
+                <a href="#adoption-future" class="nav-link text-slate-700 text-sm sm:text-base">Adoption</a>
+                <a href="#contact-us" class="nav-link text-slate-700 text-sm sm:text-base">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-20 sm:py-28">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">TRAICE: Tactical Recursive AI for Capital Efficiency</h1>
+            <p class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8">The Engine for Efficient Capital Allocation</p>
+            <p class="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto">Unlock compounding returns with self-improving Artificial Intelligence. Discover how TRAICE is reshaping industries by optimizing costs and accelerating growth—not as a futuristic vision, but through tactical, current applications.</p>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <section id="why-TRAICE" class="my-12 sm:my-16 scroll-mt-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 text-center">The Unyielding Demand for Capital Efficiency</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8 text-center">In today's economic landscape, maximizing returns on every dollar is critical. AI promises revolutionary capabilities, but its development and deployment also bring significant costs. This necessitates AI systems that are not only effective but inherently efficient. TRAICE provides a framework and tools to build such systems.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="metric-card border-l-4 border-blue-500">
+                    <p class="stat-value text-blue-600"> >$500k</p>
+                    <p class="stat-label">AI Development & Deployment Costs (Hardware, Energy, Talent)</p>
+                </div>
+                <div class="metric-card border-l-4 border-emerald-500">
+                    <p class="stat-value text-emerald-600">Trillions</p>
+                    <p class="stat-label">Potential Annual Global Value Unlocked by AI</p>
+                </div>
+            </div>
+            <p class="text-center text-slate-500 text-lg mt-4">Capital efficiency in AI means optimizing resources, reducing costs, enhancing revenue, and mitigating risks.</p>
+            <div class="text-center mt-8 sm:mt-12">
+                <a href="#contact-us" class="section-cta-button">Understand TRAICE's Impact</a>
+            </div>
+        </section>
+
+        <section id="what-is-TRAICE" class="my-12 sm:my-16 scroll-mt-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 text-center">Understanding TRAICE</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8 text-center">TRAICE (Tactical Recursive AI for Capital Efficiency) enables AI systems to continuously enhance their own learning and performance. They apply their own logic to self-improve, becoming more efficient and effective over time.</p>
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg max-w-2xl mx-auto">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4 text-center">The TRAICE Self-Improvement Loop</h3>
+                <div class="flex flex-col items-center space-y-2">
+                    <div class="TRAICE-loop-step w-full sm:w-3/4">1. AI Action & Output</div>
+                    <div class="TRAICE-loop-arrow">&#x2193;</div>
+                    <div class="TRAICE-loop-step w-full sm:w-3/4">2. Collect Feedback (Performance, Errors, Critiques)</div>
+                    <div class="TRAICE-loop-arrow">&#x2193;</div>
+                    <div class="TRAICE-loop-step w-full sm:w-3/4">3. AI Self-Refines (Updates Logic, Prompts, Parameters via TRAICE)</div>
+                    <div class="TRAICE-loop-arrow -mt-1">&#x21BA; (to Step 1)</div>
+                </div>
+                <p class="text-lg text-slate-500 mt-6 text-center">This iterative cycle allows TRAICE-enabled AI to adapt, solve complex problems, and improve resourcefully.</p>
+            </div>
+            <div class="text-center mt-8 sm:mt-12">
+                <a href="#contact-us" class="section-cta-button">Learn About TRAICE Methodology</a>
+            </div>
+        </section>
+
+        <section id="TRAICE-in-action" class="my-12 sm:my-16 scroll-mt-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 text-center">TRAICE in Action: The Dual Impact</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8 text-center">TRAICE drives capital efficiency by replacing human effort wasted on boring, repetitive tasks and by augmenting speed in creative/technical domains.</p>
+            <div class="flex justify-center space-x-2 sm:space-x-4 mb-8">
+                <button id="tabReplacingRoles" class="tab-button active">AI Automated Tasks</button>
+                <button id="tabBoostingSpeed" class="tab-button">AI Speed Boosts</button>
+            </div>
+
+            <div id="contentReplacingRoles">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-3">Customer Support</h3>
+                        <p class="text-sm text-slate-600 mb-4">AI agents handle inquiries, reducing L1 support needs and improving resolution rates.</p>
+                        <div class="chart-container mb-4 h-56 sm:h-64">
+                            <canvas id="supportChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">Example: Decagon AI (Flashfood) achieved 90%+ automated issue resolution.</p>
+                        <div id="supportDetails" class="details-text-area">Click chart or metrics for details. </div>
+                         <button onclick="showDetails('support', 'decagon')" class="text-xs text-blue-600 hover:underline mt-2">Decagon Details</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-emerald-700 mb-3">Sales & Marketing</h3>
+                        <p class="text-sm text-slate-600 mb-4">AI automates lead sourcing, outreach, and follow-ups, expanding reach efficiently.</p>
+                        <div class="chart-container mb-4 h-56 sm:h-64">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">Example: 11x.ai saved $70k+ per AI SDR annually.</p>
+                        <div id="salesDetails" class="details-text-area">Click chart or metrics for details. </div>
+                        <button onclick="showDetails('sales', '11x')" class="text-xs text-emerald-600 hover:underline mt-2">11x.ai Details</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-amber-600 mb-3">Finance & Legal</h3>
+                        <p class="text-sm text-slate-600 mb-4">Automation in billing, revenue recognition, and contract analysis.</p>
+                        <div class="chart-container mb-4 h-56 sm:h-64">
+                            <canvas id="financeChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">Example: Billtrust saved $440k annually for mid-size orgs.</p>
+                        <div id="financeDetails" class="details-text-area">Click chart or metrics for details. </div>
+                        <button onclick="showDetails('finance', 'billtrust')" class="text-xs text-amber-600 hover:underline mt-2">Billtrust Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentBoostingSpeed" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Engineering</h3>
+                        <p class="text-sm text-slate-600 mb-4">AI coding assistants accelerate development, generate code, and aid debugging.</p>
+                        <div class="chart-container mb-4 h-56 sm:h-64">
+                            <canvas id="engineeringChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">Example: GitHub Copilot ~55% faster task completion.</p>
+                        <div id="engineeringDetails" class="details-text-area">Click chart or metrics for details. </div>
+                        <button onclick="showDetails('engineering', 'copilot')" class="text-xs text-sky-600 hover:underline mt-2">Copilot Details</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Product Development</h3>
+                        <p class="text-sm text-slate-600 mb-4">AI speeds up prototyping by generating UI from designs or text.</p>
+                        <div class="chart-container mb-4 h-56 sm:h-64">
+                            <canvas id="productDevChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">Example: v0.dev up to 60% faster dev cycles (hybrid use).</p>
+                        <div id="productDevDetails" class="details-text-area">Click chart or metrics for details. </div>
+                        <button onclick="showDetails('productDev', 'v0')" class="text-xs text-purple-600 hover:underline mt-2">v0.dev Details</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-pink-700 mb-3">Marketing</h3>
+                        <p class="text-sm text-slate-600 mb-4">AI enhanced attribution and content creation.</p>
+                        <div class="chart-container mb-4 h-56 sm:h-64">
+                            <canvas id="marketingSeoChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-2">Example: HockeyStack cut ad budget 50% maintaining revenue.</p>
+                        <div id="marketingSeoDetails" class="details-text-area">Click chart or metrics for details. </div>
+                        <button onclick="showDetails('marketingSeo', 'hockeystack')" class="text-xs text-pink-600 hover:underline mt-2">HockeyStack Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8 sm:mt-12">
+                <a href="#contact-us" class="section-cta-button">See TRAICE Use Cases</a>
+            </div>
+        </section>
+
+        <section id="compounding-advantage" class="my-12 sm:my-16 scroll-mt-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 text-center">The Compounding Advantage</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8 text-center">TRAICE's approach to self-improvement means initial investments yield progressively greater returns, unlike static AI tools. It learns to perform tasks more efficiently and accurately over time.</p>
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4 text-center">TRAICE-enabled AI vs. Static AI Efficiency Gains</h3>
+                <div class="chart-container h-72 sm:h-80">
+                    <canvas id="compoundingChart"></canvas>
+                </div>
+                <p class="text-sm text-slate-500 mt-6 text-center">Illustrative: TRAICE-enabled AI shows compounding efficiency gains over time compared to the limited improvements of static AI.</p>
+            </div>
+            <div class="text-center mt-8 sm:mt-12">
+                <a href="#contact-us" class="section-cta-button">Calculate Your Potential ROI</a>
+            </div>
+        </section>
+
+        <section id="adoption-future" class="my-12 sm:my-16 scroll-mt-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 text-center">Adoption & The Future Outlook</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-3">Navigating Adoption</h3>
+                    <ul class="list-disc list-inside text-slate-600 space-y-2 text-sm">
+                        <li>Requires skilled talent for design and robust data infrastructure for feedback.</li>
+                        <li>Workforce evolution: focus on strategic oversight, AI management, and new skills.</li>
+                        <li>Ethical governance and control: ensuring fairness, transparency, and security is critical.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-emerald-700 mb-3">The Self-Optimizing Future</h3>
+                    <p class="text-slate-600 text-sm mb-3">TRAICE offers a sustainable pathway to enhanced capital efficiency.</p>
+                    <ul class="list-disc list-inside text-slate-600 space-y-2 text-sm">
+                        <li>Focus shifts to an operational environment where efficiency gains compound.</li>
+                        <li>Enterprises cultivating TRAICE-driven systems will build resilient, adaptive foundations for growth.</li>
+                        <li>A truly self-optimizing, capital-efficient enterprise is increasingly within reach.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-8 sm:mt-12">
+                <a href="#contact-us" class="section-cta-button">Discuss Your TRAICE Strategy</a>
+            </div>
+        </section>
+
+        <section id="contact-us" class="my-12 sm:my-16 py-12 sm:py-16 bg-white rounded-lg shadow-xl scroll-mt-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">Ready to Maximize Your Capital Efficiency with TRAICE?</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">Discover how our Tactical Recursive AI solutions can transform your operations, drive down costs, and unlock new levels of performance. Let's build a more efficient future, together.</p>
+                <a href="mailto:contact@example.com?subject=Inquiry%20about%20TRAICE" class="cta-button">Schedule a Consultation</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 py-8 text-center">
+        <p class="text-sm">&copy; 2025 TRAICE: Tactical Recursive AI for Capital Efficiency.</p>
+    </footer>
+
+    <script>
+        // Data for charts and details (simplified from report tables)
+        const TRAICEData = {
+            support: {
+                chartData: { labels: ['Automated Resolution (Decagon)', 'Other/Manual'], data: [90, 10], colors: ['#3B82F6', '#BFDBFE'] }, 
+                details: {
+                    decagon: "Decagon AI (Flashfood): 90%+ automated issue resolution. Recursive Advantage with TRAICE: Learns from CSAT & outcomes to refine responses, improving first-contact resolution. ",
+                    default: "Customer Support with TRAICE: Automates inquiries, learns from interactions to improve resolution rates and CSAT. Potential cost savings up to 30%."
+                }
+            },
+            sales: {
+                chartData: { labels: ['Cost Savings (11x.ai SDR)', 'Revenue Increase (11x.ai per SDR)'], data: [70, 30], colors: ['#10B981', '#A7F3D0'] }, 
+                details: {
+                    '11x': "11x.ai (AI SDR 'Jordan'): $70k+ annual SDR salary savings, $30k monthly revenue increase per human SDR. Recursive Advantage with TRAICE: Learns from engagement to refine scripts & targeting.",
+                    default: "Sales & Marketing with TRAICE: Automates lead sourcing and outreach. Learns from engagement metrics to improve lead quality and conversion."
+                }
+            },
+            finance: {
+                chartData: { labels: ['AR Savings (Billtrust $K)', 'Manual Invoice Time Reduction % (Tabs.inc)'], data: [440, 70], colors: ['#F59E0B', '#FDE68A'] }, 
+                details: {
+                    billtrust: "Billtrust: $440k annual savings in AR for a mid-size org. Recursive Advantage with TRAICE: Learns from payment patterns and audit exceptions to refine logic and fraud detection. ",
+                    default: "Finance & Legal with TRAICE: Automates billing, contract review. Learns from exceptions and regulations to optimize cash flow and reduce errors. "
+                }
+            },
+            engineering: {
+                chartData: { labels: ['Task Speed Up (Copilot %)', 'Issue Resolution (Devin AI %)'], data: [55, 13.86], colors: ['#0EA5E9', '#BAE6FD'] }, 
+                details: {
+                    copilot: "GitHub Copilot: ~55% faster task completion. Recursive Advantage with TRAICE: Learns from developer interactions (accepts/rejects) to improve code suggestion quality for specific codebases.",
+                    default: "Engineering with TRAICE: Accelerates development, generates code, aids debugging. Learns from developer interactions to improve suggestion quality."
+                }
+            },
+            productDev: {
+                chartData: { labels: ['Dev Cycle Reduction (v0 %)', 'Handoff Time Cut (General AI X-times)'], data: [60, 2.5], colors: ['#8B5CF6', '#DDD6FE'] }, 
+                details: {
+                    v0: "v0.dev: Up to 60% faster development cycles (with Cursor AI). Recursive Advantage with TRAICE: Learns from designer/developer feedback to improve UI generation fidelity.",
+                    default: "Product Development with TRAICE: Speeds up design-to-prototype. Learns from feedback to improve UI generation quality."
+                }
+            },
+            marketingSeo: {
+                chartData: { labels: ['Ad Budget Cut (HockeyStack %)', 'Content Velocity (GrowthX X-times)'], data: [50, 10], colors: ['#EC4899', '#FBCFE8'] }, 
+                details: {
+                    hockeystack: "HockeyStack: Cut ad budget by 50% while maintaining revenue. Recursive Advantage with TRAICE: Learns from campaign performance to refine attribution models and SEO tactics.",
+                    default: "Marketing with TRAICE: Enhances attribution, scales content. Learns from performance to optimize spend and strategies."
+                }
+            }
+        };
+
+        let charts = {};
+
+        function createChart(ctx, type, chartData) {
+            if (charts[ctx.canvas.id]) {
+                charts[ctx.canvas.id].destroy();
+            }
+            charts[ctx.canvas.id] = new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Impact Metric',
+                        data: chartData.data,
+                        backgroundColor: chartData.colors,
+                        borderColor: chartData.colors.map(color => color.slice(0, -2) + '80'),
+                        borderWidth: 1,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: type !== 'bar', position: 'bottom', labels: { font: { size: 10, family: 'Lato' }, color: '#4B5563' } },
+                        tooltip: {
+                            bodyFont: { family: 'Lato' }, titleFont: { family: 'Lato' },
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) { label += context.parsed.y; }
+                                    if (context.parsed._custom !== null && chartData.labels[context.dataIndex].includes('%')) { label += '%'; }
+                                     else if (chartData.labels[context.dataIndex].includes('$K') || chartData.labels[context.dataIndex].includes('Savings')) { label += 'K USD'; }
+                                     else if (chartData.labels[context.dataIndex].includes('X-times') || chartData.labels[context.dataIndex].includes('Velocity')) { label += 'x'; }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: type === 'bar' ? { 
+                        y: { beginAtZero: true, ticks: { font: {size: 10, family: 'Lato'}, color: '#4B5563' } },
+                        x: { ticks: { font: {size: 10, family: 'Lato'}, color: '#4B5563' } }
+                    } : {}
+                }
+            });
+        }
+        
+        function initCharts() {
+            createChart(document.getElementById('supportChart').getContext('2d'), 'doughnut', TRAICEData.support.chartData);
+            createChart(document.getElementById('salesChart').getContext('2d'), 'bar', TRAICEData.sales.chartData);
+            createChart(document.getElementById('financeChart').getContext('2d'), 'bar', TRAICEData.finance.chartData);
+            createChart(document.getElementById('engineeringChart').getContext('2d'), 'bar', TRAICEData.engineering.chartData);
+            createChart(document.getElementById('productDevChart').getContext('2d'), 'bar', TRAICEData.productDev.chartData);
+            createChart(document.getElementById('marketingSeoChart').getContext('2d'), 'bar', TRAICEData.marketingSeo.chartData);
+
+            const compoundingCtx = document.getElementById('compoundingChart').getContext('2d');
+            if (charts[compoundingCtx.canvas.id]) charts[compoundingCtx.canvas.id].destroy();
+            charts[compoundingCtx.canvas.id] = new Chart(compoundingCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Year 0', 'Year 1', 'Year 2', 'Year 3'],
+                    datasets: [
+                        {
+                            label: 'Static AI Efficiency',
+                            data: [100, 105, 108, 110],
+                            borderColor: '#64748B', 
+                            backgroundColor: '#64748B33',
+                            tension: 0.1,
+                            fill: true
+                        },
+                        {
+                            label: 'TRAICE-enabled AI Efficiency',
+                            data: [100, 120, 150, 190],
+                            borderColor: '#2563EB', 
+                            backgroundColor: '#2563EB33',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'top', labels: {color: '#4B5563', font: {family: 'Lato'}} } },
+                    scales: { 
+                        y: { beginAtZero: false, stacked: false, title: { display: true, text: 'Relative Efficiency Index', font:{size:10, family: 'Lato'}, color: '#4B5563' }, ticks:{color: '#4B5563', font:{size:10, family: 'Lato'}} }, 
+                        x: {ticks:{color: '#4B5563', font:{size:10, family: 'Lato'}}} 
+                    }
+                }
+            });
+        }
+
+        const tabReplacingRoles = document.getElementById('tabReplacingRoles');
+        const tabBoostingSpeed = document.getElementById('tabBoostingSpeed');
+        const contentReplacingRoles = document.getElementById('contentReplacingRoles');
+        const contentBoostingSpeed = document.getElementById('contentBoostingSpeed');
+
+        tabReplacingRoles.addEventListener('click', () => {
+            tabReplacingRoles.classList.add('active');
+            tabBoostingSpeed.classList.remove('active');
+            contentReplacingRoles.classList.remove('hidden');
+            contentBoostingSpeed.classList.add('hidden');
+        });
+
+        tabBoostingSpeed.addEventListener('click', () => {
+            tabBoostingSpeed.classList.add('active');
+            tabReplacingRoles.classList.remove('active');
+            contentBoostingSpeed.classList.remove('hidden');
+            contentReplacingRoles.classList.add('hidden');
+        });
+
+        function showDetails(section, key) {
+            const detailsArea = document.getElementById(`${section}Details`);
+            if (TRAICEData[section] && TRAICEData[section].details[key]) {
+                detailsArea.textContent = TRAICEData[section].details[key];
+            } else if (TRAICEData[section] && TRAICEData[section].details.default) {
+                 detailsArea.textContent = TRAICEData[section].details.default;
+            }
+        }
+        
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#mainNav a.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - document.getElementById('mainNav').offsetHeight - 20)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            if (window.pageYOffset < sections[0].offsetTop - document.getElementById('mainNav').offsetHeight - 20) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (document.querySelector('#mainNav a[href="#hero"]')) {
+                    document.querySelector('#mainNav a[href="#hero"]').classList.add('active');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            for (const section in TRAICEData) {
+                if (TRAICEData[section].details && TRAICEData[section].details.default) {
+                    const detailsArea = document.getElementById(`${section}Details`);
+                    if (detailsArea) { 
+                        detailsArea.textContent = TRAICEData[section].details.default;
+                    }
+                }
+            }
+            if (window.pageYOffset < sections[0].offsetTop) {
+                 if (document.querySelector('#mainNav a[href="#hero"]')) {
+                    document.querySelector('#mainNav a[href="#hero"]').classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
